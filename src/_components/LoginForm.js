@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { withStyles } from "@material-ui/core";
@@ -34,9 +34,12 @@ const LoginForm = (props)=>{
     }),
     onSubmit: values => {
       props.loginRequest(values);
-      history.push("/listing")
+     // history.push("/listing")
     },
   });
+  useEffect(() => {
+    if(props.loged_data) history.push("/listing")
+  },[props.loged_data]);
   return(
     <div className={classes.container}>
       <form onSubmit={formik.handleSubmit}>
@@ -87,7 +90,7 @@ const LoginForm = (props)=>{
 
 function mapState(state) {
 	return {
-        //findprogrammedata: state.getsearchProgramme.searchprogramme,
+    loged_data: state.loginrequest.loged_data,
 
 	};
 }

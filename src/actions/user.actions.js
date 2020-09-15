@@ -11,7 +11,9 @@ function login(user) {
 		dispatch(request({ user }));
 		userService.login(user).then(
 			user => {
-				dispatch(success());
+				console.log(user,"useruseruser----");
+				localStorage.setItem('user', JSON.stringify(user))
+				dispatch(success(user));
 
 			},
 			error => {

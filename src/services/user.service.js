@@ -8,13 +8,14 @@ function login(user) {
 	console.log(user,"user")
 	const requestOptions = {
 		method: 'POST',
-		headers: new Headers({ accept: 'application/json', 'content-type': 'application/json' }),
+		headers: { 'Content-type': 'application/json' },
 		body: JSON.stringify({
-			user,
+			"username":user.userEmail,
+			"password":user.userPassword
 		}),
 	};
 
-	return fetch(`/login`, requestOptions).then(handleResponse);
+	return fetch('http://localhost:8765/loan-management/login', requestOptions).then(handleResponse);
 }
 function handleResponse(response) {
 	return response.text().then(text => {

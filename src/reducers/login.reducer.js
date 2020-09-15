@@ -1,12 +1,13 @@
 import { userConstants } from '../constants';
 
 export function loginrequest(state = {}, action) {
+	//action.user
 	switch (action.type) {
-		case userConstants.USERS_LOGIN_REQUEST:
+		case userConstants.LOGIN_REQUEST:
 			return { loged_data: false };
-		case userConstants.USERS_LOGIN_SUCCESS:
-			return { loged_data: action.data };
-		case userConstants.USERS_LOGIN_FAILURE:
+		case userConstants.LOGIN_SUCCESS:
+			return { loged_data: true };
+		case userConstants.LOGIN_FAILURE:
 			return { loged_data: false };
 		default:
 			return state;
