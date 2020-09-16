@@ -54,7 +54,9 @@ const  LoanListing = (props) => {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
+  const parentSearch = (filterData) =>{
+    console.log(filterData);
+  }
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -72,7 +74,7 @@ const  LoanListing = (props) => {
     <>
    
     <Paper className={classes.root}>
-    <LoanSearchForm></LoanSearchForm>
+    <LoanSearchForm parentSearch={parentSearch}></LoanSearchForm>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

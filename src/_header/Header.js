@@ -20,8 +20,8 @@ const useStyles = makeStyles({
 });
 
 const logout = () =>{
-  console.log("localstorage", localStorage.clear());
-  let user = localStorage.removeItem(user);
+ // console.log("localstorage", localStorage.clear());
+  let user = localStorage.removeItem("user");
 }
 
 export default function Header() {

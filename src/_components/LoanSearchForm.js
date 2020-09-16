@@ -39,6 +39,7 @@ const LoanSearchForm = (props)=>{
             .min(5, "loan amount not less than 1 lakh"),
     }),*/
     onSubmit: values => {
+      props.parentSearch(values);
       alert(JSON.stringify(values, null, 2))
     },
   });
