@@ -55,6 +55,7 @@ const  LoanListing = (props) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const parentSearch = (filterData) =>{
+    props.loanrequest(filterData);
     console.log(filterData);
   }
   const handleChangePage = (event, newPage) => {

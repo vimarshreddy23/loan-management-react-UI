@@ -40,7 +40,7 @@ const LoanSearchForm = (props)=>{
     }),*/
     onSubmit: values => {
       props.parentSearch(values);
-      alert(JSON.stringify(values, null, 2))
+      //alert(JSON.stringify(values, null, 2))
     },
   });
 

@@ -1,19 +1,19 @@
 import { authHeader } from '../helper/auth-header';
+
 export const loanService = {
-	loanSearch,
+	findloan,
 	
 };
 
-function loanSearch(data) {
+function findloan(user) {
+	console.log(user.LoanNumber,">>>>>>user")
 	const requestOptions = {
-        method: 'GET',
+		method: 'GET',
 		headers: authHeader(),
-		body: JSON.stringify({
-			
-		}),
+		
 	};
 
-	return fetch(`/account/register`, requestOptions).then(handleResponse);
+	return fetch('http://localhost:8765/loan-retrieval-service/api/loans/getLoanDetails?loanNumber='+user.LoanNumber, requestOptions).then(handleResponse);
 }
 function handleResponse(response) {
 	return response.text().then(text => {

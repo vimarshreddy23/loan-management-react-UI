@@ -9,7 +9,7 @@ function loanSearch(data) {
 
 	return dispatch => {
 		dispatch(request({ data }));
-		loanService.loanSearch(data).then(
+		loanService.findloan(data).then(
 			data => {
 				dispatch(success());
 
