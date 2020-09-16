@@ -54,6 +54,7 @@ const useStyles = makeStyles({
         <Typography variant="title" color="inherit">
           Loan Management System
         </Typography>
+        {/* logout button */}
         {(props.status )?<Button className={classes.logoutButton} onClick= { logout }>Logout</Button>:""}
         
       </Toolbar>

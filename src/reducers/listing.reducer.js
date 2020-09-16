@@ -6,7 +6,7 @@ export function loanrequest(state = {}, action) {
 		case userConstants.LOAN_LISTING_REQUEST:
 			return { loan_data: false };
 		case userConstants.LOAN_LISTING_SUCCESS:
-			return { loan_data: true };
+			return { loan_data: action.data };
 		case userConstants.LOAN_LISTING_FAILURE:
 			return { loan_data: false };
 		default:

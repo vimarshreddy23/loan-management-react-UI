@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -15,32 +15,16 @@ import Header  from '../_header/Header';
 
 
 const columns = [
-  { id: 'loanId', label: 'Loan Number' },
+  { id: 'borrowerFullName', label: 'Customer Name'},
+  { id: 'loanNumber', label: 'Loan Number' },
   { id: 'loanAmount', label: 'Loan Amount'},
-  { id: 'dueDate', label: 'Due Date'}, 
+  { id: 'loanInterest', label: 'Loan Interest'},
+  { id: 'loanTenure', label: 'Loan Tenure'},
+  { id: 'loanType', label: 'Loan Type'},
+  { id: 'borrowerContact', label: 'Contact Number'},
+  { id: 'createdTime', label: 'Created Date'}, 
 ];
 
-function createData(loanId, loanAmount, dueDate) {
-  return { loanId, loanAmount, dueDate };
-}
-
-const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
-  createData('China', 'CN', 1403500365, 9596961),
-  createData('Italy', 'IT', 60483973, 301340),
-  createData('United States', 'US', 327167434, 9833520),
-  createData('Canada', 'CA', 37602103, 9984670),
-  createData('Australia', 'AU', 25475400, 7692024),
-  createData('Germany', 'DE', 83019200, 357578),
-  createData('Ireland', 'IE', 4857000, 70273),
-  createData('Mexico', 'MX', 126577691, 1972550),
-  createData('Japan', 'JP', 126317000, 377973),
-  createData('France', 'FR', 67022000, 640679),
-  createData('United Kingdom', 'GB', 67545757, 242495),
-  createData('Russia', 'RU', 146793744, 17098246),
-  createData('Nigeria', 'NG', 200962417, 923768),
-  createData('Brazil', 'BR', 210147125, 8515767),
-];
 
 const useStyles = makeStyles({
   root: {
@@ -55,7 +39,9 @@ const  LoanListing = (props) => {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [reciveData, setReciveData] = useState([]);
   const parentSearch = (filterData) =>{
+    setReciveData([]);
     props.loanrequest(filterData);
     console.log(filterData);
   }
@@ -69,7 +55,9 @@ const  LoanListing = (props) => {
   };
 
   useEffect( () => {
-    console.log("service data", props.loan_data);
+    if(props.loan_data){
+      setReciveData(props.loan_data)
+    }
   },[props.loan_data]);
 
   return (
@@ -77,7 +65,9 @@ const  LoanListing = (props) => {
    <Header status = {true}></Header>
     <Paper className={classes.root}>
     <LoanSearchForm parentSearch={parentSearch}></LoanSearchForm>
-      <TableContainer className={classes.container}>
+    {reciveData.length>0 &&
+    <> 
+      <TableContainer  className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -93,7 +83,7 @@ const  LoanListing = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            {reciveData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                   {columns.map((column) => {
@@ -113,12 +103,14 @@ const  LoanListing = (props) => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 15, 20]}
         component="div"
-        count={rows.length}
+        count={reciveData.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
+      </>
+    }
     </Paper>
   </>
   );
