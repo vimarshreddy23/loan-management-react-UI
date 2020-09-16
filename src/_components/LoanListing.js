@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -9,8 +9,12 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import LoanSearchForm from './LoanSearchForm';
+import { loanListingActions } from '../actions/loanListing.actions';
+import { connect } from 'react-redux';
+
+
 const columns = [
-  { id: 'loanId', label: 'Loan ID' },
+  { id: 'loanId', label: 'Loan Number' },
   { id: 'loanAmount', label: 'Loan Amount'},
   { id: 'dueDate', label: 'Due Date'}, 
 ];
@@ -46,7 +50,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function LoanListing() {
+const  LoanListing = (props) => {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -59,6 +63,10 @@ export default function LoanListing() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  useEffect( () => {
+    console.log("service data", props.loan_data);
+  },[props.loan_data]);
 
   return (
     <>
@@ -110,4 +118,18 @@ export default function LoanListing() {
     </Paper>
   </>
   );
+};
+
+function mapState(state){
+  return{
+    loan_data: state.loanrequest.loan_data,
+  };
 }
+
+const actionCreators = {
+  loanrequest: loanListingActions.loanSearch
+};
+
+
+export default connect(mapState, actionCreators)(LoanListing);
+

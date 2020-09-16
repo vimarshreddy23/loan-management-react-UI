@@ -13,6 +13,12 @@ function login(user) {
 		userService.login(user).then(
 			user => {
 				dispatch(success());
+				const now = new Date();
+				let userData = {
+					value: user,
+					expiry: now.getTime()+5000
+				}
+				localStorage.setItem('user', JSON.stringify(userData));
                 toast.info("User logged in successfully!", {
                     position: toast.POSITION.BOTTOM_RIGHT,
                     autoClose: 5000,

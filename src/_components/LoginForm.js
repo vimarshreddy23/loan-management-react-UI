@@ -12,6 +12,8 @@ import { userActions } from '../actions/user.actions';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+
+const user = JSON.parse(localStorage.getItem('user'));
 const LoginForm = (props)=>{
   const history = useHistory();
 
@@ -38,7 +40,7 @@ const LoginForm = (props)=>{
     },
   });
   useEffect(() => {
-    if(props.loged_data) history.push("/listing")
+    if(props.loged_data || user && user.value && user.value.jwt) history.push("/listing")
   },[props.loged_data]);
   return(
     <div className={classes.container}>

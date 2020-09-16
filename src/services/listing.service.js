@@ -4,10 +4,10 @@ export const loanService = {
 	
 };
 
-function loanSearch(user) {
+function loanSearch(data) {
 	const requestOptions = {
         method: 'GET',
-		headers: new Headers({ accept: 'application/json', 'content-type': 'application/json',authHeader() }),
+		headers: authHeader(),
 		body: JSON.stringify({
 			
 		}),
