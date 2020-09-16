@@ -4,6 +4,7 @@ export function authHeader() {
 
     if (user && user.value && user.value.jwt ) {
         return { 'Authorization': 'Bearer ' + user.value.jwt };
+      // return { 'x-access-token': user.value.jwt };
     } else {
         return {};
     }

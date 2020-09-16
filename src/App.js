@@ -13,7 +13,6 @@ function App(props) {
         <Router>
           <Switch> 
             <Fragment>
-               <Header></Header>
                   <Route exact path = "/" render={props => <LoginForm {...props} />} />
                   <PrivateRoute exact path="/listing" component={LoanListing} />
             </Fragment>

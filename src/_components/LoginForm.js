@@ -11,7 +11,7 @@ import styles from "./Styles";
 import { userActions } from '../actions/user.actions';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
+import Header  from '../_header/Header';
 
 const user = JSON.parse(localStorage.getItem('user'));
 const LoginForm = (props)=>{
@@ -40,9 +40,12 @@ const LoginForm = (props)=>{
     },
   });
   useEffect(() => {
-    if(props.loged_data || user && user.value && user.value.jwt) history.push("/listing")
+    if(props.loged_data || (user && user.value && user.value.jwt)){
+      history.push("/listing");
+    } 
   },[props.loged_data]);
   return(
+    <><Header data = {false}></Header>
     <div className={classes.container}>
       <form onSubmit={formik.handleSubmit}>
         <Card className={classes.card}>
@@ -87,6 +90,7 @@ const LoginForm = (props)=>{
         </Card>
       </form>
     </div>
+    </>
   );
 };
 

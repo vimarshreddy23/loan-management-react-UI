@@ -1,9 +1,11 @@
 import { userConstants } from '../constants';
 import { userService } from '../services';
-//import { history } from '../helpers';
+import { history } from '../helper/history';
 import { toast } from 'react-toastify';
+import cookie from 'react-cookies';
 export const userActions = {
 	login,
+	cleardata,
 };
 
 function login(user) {
@@ -19,6 +21,7 @@ function login(user) {
 					expiry: now.getTime()+5000
 				}
 				localStorage.setItem('user', JSON.stringify(userData));
+				cookie.save('user', user,{path:'/'})
                 toast.info("User logged in successfully!", {
                     position: toast.POSITION.BOTTOM_RIGHT,
                     autoClose: 5000,
@@ -44,4 +47,10 @@ function login(user) {
 	function failure(error) {
 		return { type: userConstants.LOGIN_FAILURE, error };
 	}
+}
+
+
+function cleardata() {
+
+	return { type: userConstants.RESET_DATA };
 }

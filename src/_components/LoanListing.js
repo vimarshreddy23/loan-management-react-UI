@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import LoanSearchForm from './LoanSearchForm';
 import { loanListingActions } from '../actions/loanListing.actions';
 import { connect } from 'react-redux';
+import Header  from '../_header/Header';
 
 
 const columns = [
@@ -73,7 +74,7 @@ const  LoanListing = (props) => {
 
   return (
     <>
-   
+   <Header status = {true}></Header>
     <Paper className={classes.root}>
     <LoanSearchForm parentSearch={parentSearch}></LoanSearchForm>
       <TableContainer className={classes.container}>

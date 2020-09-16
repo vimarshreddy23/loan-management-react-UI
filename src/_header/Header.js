@@ -7,7 +7,9 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
-
+import { useHistory } from 'react-router-dom';
+import { userActions } from '../actions/index';
+import { connect } from 'react-redux';
 const useStyles = makeStyles({
   rightToolbar: {
     marginLeft: "auto",
@@ -17,14 +19,27 @@ const useStyles = makeStyles({
     marginRight: 16,
     marginLeft: -12,
   },
+  logoutButton: {
+    position: "absolute",
+    top: 14,
+    color:"#ffffff",
+    border: "1px solid #ffffff",
+    right: 14,
+    fontSize: 12,
+  },
 });
 
-const logout = () =>{
- // console.log("localstorage", localStorage.clear());
-  let user = localStorage.removeItem("user");
-}
 
-export default function Header() {
+   const Header =  (props) =>{
+  // const user = JSON.parse(localStorage.getItem('user'));
+   //const [Flag, setFlag] = useState(false);
+  const history = useHistory();
+  const logout = () => {
+    props.usercleardata();
+    localStorage.removeItem('user');
+    //setFlag(!Flag);
+    history.push("/");
+  };
   const classes = useStyles();
   return (
     <AppBar position="static">
@@ -39,8 +54,10 @@ export default function Header() {
         <Typography variant="title" color="inherit">
           Loan Management System
         </Typography>
+        {(props.status )?<Button className={classes.logoutButton} onClick= { logout }>Logout</Button>:""}
+        
       </Toolbar>
-      <Button onClick= { logout }>Logout</Button>
+     
     </AppBar>
   );
 }
@@ -48,3 +65,16 @@ export default function Header() {
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
+function mapState(state) {
+	return {
+    loged_data: state.loginrequest.loged_data,
+
+	};
+}
+
+const actionCreators = {
+  usercleardata : userActions.cleardata
+};
+
+export default connect(mapState, actionCreators)(Header);

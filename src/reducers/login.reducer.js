@@ -9,6 +9,8 @@ export function loginrequest(state = {}, action) {
 			return { loged_data: true };
 		case userConstants.LOGIN_FAILURE:
 			return { loged_data: false };
+		case userConstants.RESET_DATA:
+			return { loged_data: false };
 		default:
 			return state;
 	}
