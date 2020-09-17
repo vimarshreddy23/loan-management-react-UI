@@ -12,7 +12,7 @@ import LoanSearchForm from './LoanSearchForm';
 import { loanListingActions } from '../actions/loanListing.actions';
 import { connect } from 'react-redux';
 import Header  from '../_header/Header';
-
+import { CircularProgress } from '@material-ui/core';
 
 const columns = [
   { id: 'borrowerFullName', label: 'Customer Name'},
@@ -65,6 +65,8 @@ const  LoanListing = (props) => {
    <Header status = {true}></Header>
     <Paper className={classes.root}>
     <LoanSearchForm parentSearch={parentSearch}></LoanSearchForm>
+    {/* { props.loan_data === false &&  <CircularProgress />
+    } */}
     {reciveData.length>0 &&
     <> 
       <TableContainer  className={classes.container}>

@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import { useHistory } from 'react-router-dom';
 import { userActions } from '../actions/index';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const useStyles = makeStyles({
   rightToolbar: {
@@ -42,6 +43,10 @@ const useStyles = makeStyles({
     props.usercleardata();
     localStorage.removeItem('user');
     //setFlag(!Flag);
+    toast.info("You have successfully logout...", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      autoClose: 5000,
+    });
     history.push("/");
   };
   return (

@@ -5,7 +5,7 @@ export const userService = {
 };
 
 function login(user) {
-	console.log(user,"user")
+	console.log(process.env.REACT_APP_API,"user")
 	const requestOptions = {
 		method: 'POST',
 		headers: { 'Content-type': 'application/json' },
@@ -15,7 +15,7 @@ function login(user) {
 		}),
 	};
 
-	return fetch('http://localhost:8765/loan-management/login', requestOptions).then(handleResponse);
+	return fetch(process.env.REACT_APP_API+'loan-management/login', requestOptions).then(handleResponse);
 }
 function handleResponse(response) {
 	return response.text().then(text => {

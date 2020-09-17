@@ -36,7 +36,6 @@ const LoginForm = (props)=>{
     }),
     onSubmit: values => {
       props.loginRequest(values);
-     // history.push("/listing")
     },
   });
   useEffect(() => {

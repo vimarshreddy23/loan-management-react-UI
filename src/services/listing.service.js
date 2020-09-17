@@ -14,7 +14,7 @@ function findloan(user) {
 	
 	let queryString = 'loanAmount='+user.LoanAmount+'&loanNumber='+user.LoanNumber+'&name='+user.FullName;
 
-	return fetch('http://localhost:8765/loan-retrieval-service/api/loans/getLoanDetails?'+queryString, requestOptions).then(handleResponse);
+	return fetch(process.env.REACT_APP_API+'loan-retrieval-service/api/loans/getLoanDetails?'+queryString, requestOptions).then(handleResponse);
 }
 function handleResponse(response) {
 	return response.text().then(text => {
