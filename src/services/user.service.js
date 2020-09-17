@@ -1,11 +1,9 @@
 
 export const userService = {
 	login,
-	
 };
 
 function login(user) {
-	console.log(process.env.REACT_APP_API,"user")
 	const requestOptions = {
 		method: 'POST',
 		headers: { 'Content-type': 'application/json' },

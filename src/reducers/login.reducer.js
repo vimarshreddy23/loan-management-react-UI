@@ -1,7 +1,6 @@
 import { userConstants } from '../constants';
 
 export function loginrequest(state = {}, action) {
-	//action.user
 	switch (action.type) {
 		case userConstants.LOGIN_REQUEST:
 			return { loged_data: false };
@@ -10,7 +9,7 @@ export function loginrequest(state = {}, action) {
 		case userConstants.LOGIN_FAILURE:
 			return { loged_data: false };
 		case userConstants.RESET_DATA:
-			return { loged_data: false };
+			return { loged_data: undefined };
 		default:
 			return state;
 	}

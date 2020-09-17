@@ -1,7 +1,6 @@
 import { userConstants } from '../constants';
 
 export function loanrequest(state = {}, action) {
-	//action.user
 	switch (action.type) {
 		case userConstants.LOAN_LISTING_REQUEST:
 			return { loan_data: false };

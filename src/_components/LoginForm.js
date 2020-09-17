@@ -39,8 +39,9 @@ const LoginForm = (props)=>{
     },
   });
   useEffect(() => {
+    //validated is user logedin or not
     if(props.loged_data || (user && user.value && user.value.jwt)) history.push("/listing");
-  },[props.loged_data]);
+  },[props.loged_data,history]);
   return(
     <><Header data = {false}></Header>
     <div className={classes.container}>

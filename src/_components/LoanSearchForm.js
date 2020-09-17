@@ -36,15 +36,8 @@ const LoanSearchForm = (props)=>{
   return(
     <div className={classes.customContainer}>
       <form onSubmit={formik.handleSubmit} className={classe.root}>
-       
-          
             <h1 className={classes.textCenter}>Loan Search</h1>
-
-            
-              
-
             <TextField
-            
               id="FullName"
               label="Full Name"
               type="text"
@@ -75,16 +68,10 @@ const LoanSearchForm = (props)=>{
               margin="dense"
               variant="outlined"
             />
-         
-          
-         
             <Button type="submit" color="primary" className={classes.subnitButtonLoanSearch} disabled={!formik.dirty} >
               Search
             </Button>
-            
-
             <div>
-
             {formik.touched.loanID && formik.errors.loanID ? (
                 <div className={classes.errMessage}>{formik.errors.loanID}</div>
               ) : null}     

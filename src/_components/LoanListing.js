@@ -12,7 +12,7 @@ import LoanSearchForm from './LoanSearchForm';
 import { loanListingActions } from '../actions/loanListing.actions';
 import { connect } from 'react-redux';
 import Header  from '../_header/Header';
-import { CircularProgress } from '@material-ui/core';
+//import { CircularProgress } from '@material-ui/core';
 
 const columns = [
   { id: 'borrowerFullName', label: 'Customer Name'},
