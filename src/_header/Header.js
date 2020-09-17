@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import { useHistory } from 'react-router-dom';
 import { userActions } from '../actions/index';
 import { connect } from 'react-redux';
+
 const useStyles = makeStyles({
   rightToolbar: {
     marginLeft: "auto",
@@ -31,6 +32,9 @@ const useStyles = makeStyles({
 
 
    const Header =  (props) =>{
+     
+  const classes = useStyles();
+
   // const user = JSON.parse(localStorage.getItem('user'));
    //const [Flag, setFlag] = useState(false);
   const history = useHistory();
@@ -40,7 +44,6 @@ const useStyles = makeStyles({
     //setFlag(!Flag);
     history.push("/");
   };
-  const classes = useStyles();
   return (
     <AppBar position="static">
       <Toolbar>
@@ -51,7 +54,7 @@ const useStyles = makeStyles({
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="title" color="inherit">
+        <Typography color="inherit">
           Loan Management System
         </Typography>
         {/* logout button */}

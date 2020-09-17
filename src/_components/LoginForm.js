@@ -40,9 +40,7 @@ const LoginForm = (props)=>{
     },
   });
   useEffect(() => {
-    if(props.loged_data || (user && user.value && user.value.jwt)){
-      history.push("/listing");
-    } 
+    if(props.loged_data || (user && user.value && user.value.jwt)) history.push("/listing");
   },[props.loged_data]);
   return(
     <><Header data = {false}></Header>

@@ -1,6 +1,5 @@
 import React from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { withStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -28,19 +27,8 @@ const LoanSearchForm = (props)=>{
         LoanNumber: '',
         LoanAmount: '',
     },
-  /*  validationSchema: Yup.object({
-      FullName: Yup.string()
-            .min(3,"atleast enter 3 characters"),
-            LoanNumber: Yup
-            .number(),
-            
-            LoanAmount: Yup
-            .number()
-            .min(5, "loan amount not less than 1 lakh"),
-    }),*/
     onSubmit: values => {
       props.parentSearch(values);
-      //alert(JSON.stringify(values, null, 2))
     },
   });
 

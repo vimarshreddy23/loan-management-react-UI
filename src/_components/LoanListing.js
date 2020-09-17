@@ -83,9 +83,9 @@ const  LoanListing = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {reciveData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            {reciveData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, i) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                <TableRow hover role="checkbox" tabIndex={-1} key={i}>
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (

@@ -6,13 +6,13 @@ export const loanService = {
 };
 
 function findloan(user) {
-	console.log(user.LoanNumber,">>>>>>user")
+	// console.log(user.LoanNumber,">>>>>>user")
 	const requestOptions = {
 		method: 'GET',
 		headers: authHeader(),		
 	};
 	
-	let queryString = 'loanAmount='+user.LoanAmount+'&loanNumber='+user.LoanNumber;
+	let queryString = 'loanAmount='+user.LoanAmount+'&loanNumber='+user.LoanNumber+'&name='+user.FullName;
 
 	return fetch('http://localhost:8765/loan-retrieval-service/api/loans/getLoanDetails?'+queryString, requestOptions).then(handleResponse);
 }

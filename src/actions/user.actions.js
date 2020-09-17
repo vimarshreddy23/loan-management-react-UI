@@ -1,6 +1,5 @@
 import { userConstants } from '../constants';
 import { userService } from '../services';
-import { history } from '../helper/history';
 import { toast } from 'react-toastify';
 import cookie from 'react-cookies';
 export const userActions = {
